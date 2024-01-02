@@ -1,0 +1,9 @@
+[user]
+	name = absoluteunit1
+	email = suprun.anton6@gmail.com
+[alias]
+    ls-untracked = ls-files --others --exclude-standard
+    st = status -sb
+	change = !git branch | fzf-tmux -w 30% -h 65% | xargs git switch
+    fdiff = !git status -sb | awk '{ print $2 }' | fzf-tmux -w 70% -h 50% | xargs git diff
+    restore-files = !g
