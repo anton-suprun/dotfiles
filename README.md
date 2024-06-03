@@ -8,4 +8,4 @@ Welcome to my personal dotfiles repository! This is where I store and manage my 
 - `nvim` - neovim configs
 - `.tmux.conf` - tmux config (very minimal)
 - `.gitconfig` - Git goodies 🎁
-- `alacritty.yml` - Terminal emulator tweaks 💨
+- `alacritty.toml` - Terminal emulator tweaks 💨
