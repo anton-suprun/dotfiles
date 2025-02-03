@@ -3,7 +3,22 @@
 	email = suprun.anton6@gmail.com
 [alias]
     ls-untracked = ls-files --others --exclude-standard
-    st = status -sb
 	change = !git branch | fzf-tmux -w 30% -h 65% | xargs git switch
     fdiff = !git status -sb | awk '{ print $2 }' | fzf-tmux -w 70% -h 50% | xargs git diff
     restore-files = !g
+    st = "!f() { \
+        echo \"\\033[1;35m┌─────────────────────────────────────────────┐\\033[0m\"; \
+        echo \"\\033[1;35m│       GIT STATUS & DIFF SUMMARY             │\\033[0m\"; \
+        echo \"\\033[1;35m└─────────────────────────────────────────────┘\\033[0m\"; \
+        echo; \
+        echo \"\\033[1;36m▸ BRANCH & STAGING STATUS:\\033[0m\"; \
+        git status --short --branch; \
+        echo; \
+        echo \"\\033[1;36m▸ STAGED CHANGES (INDEX):\\033[0m\"; \
+        git --no-pager diff --cached --stat --color=always; \
+        echo; \
+        echo \"\\033[1;36m▸ UNSTAGED CHANGES (WORK TREE):\\033[0m\"; \
+        git --no-pager diff --stat --color=always; \
+  } ; f"
+[core]
+	pager = nvim +Man!
